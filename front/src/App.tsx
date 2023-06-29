@@ -1,9 +1,10 @@
 import styles from './app.module.scss';
+import Header from "./components/Header/Header";
 
 function App() {
     return (
         <div className={`${styles.appContainer}`}>
-            #TODO: import comp of app here header, content and footer
+            <Header/>
         </div>
     );
 }
