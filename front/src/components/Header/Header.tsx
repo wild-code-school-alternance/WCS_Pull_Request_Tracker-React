@@ -11,7 +11,7 @@ function Header() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse mt-2 text-end" id="navbarSupportedContent">
-                    <ul className="navbar-nav mb-2 mb-lg-0">
+                    <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                         <li className="nav-item">
                             <a className="nav-link" href="#">Project</a>
                         </li>
@@ -25,8 +25,6 @@ function Header() {
                 </div>
             </div>
         </nav>
-    )
-        ;
-};
-
+    );
+}
 export default Header;
