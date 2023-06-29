@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
 function Header() {
@@ -13,13 +14,13 @@ function Header() {
                 <div className="collapse navbar-collapse mt-2 text-end" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Project</a>
+                            <NavLink className="nav-link" to="/project" activeClassName="active">Project</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Pull request</a>
+                            <NavLink className="nav-link" to="/pullrequest" activeClassName="active">Pull request</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Contributor</a>
+                            <NavLink className="nav-link" to="/contributor" activeClassName="active">Contributor</NavLink>
                         </li>
                     </ul>
                 </div>
@@ -27,4 +28,5 @@ function Header() {
         </nav>
     );
 }
+
 export default Header;
