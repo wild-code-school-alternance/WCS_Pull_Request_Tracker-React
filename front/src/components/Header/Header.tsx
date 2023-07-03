@@ -2,7 +2,7 @@ import {NavLink} from 'react-router-dom';
 import './Header.scss';
 
 function Header() {
-    async function fetchData(route: string): Promise<void> {
+    async function fetchLink(route: string): Promise<void> {
         try {
             const response = await fetch(`http://localhost:8000/${route}`);
             if (!response.ok) {
@@ -29,17 +29,17 @@ function Header() {
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/project" activeClassName="active"
-                                     onClick={() => fetchData('project')}>Project</NavLink>
+                                     onClick={() => fetchLink('project')}>Project</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/pullRequest" activeClassName="active"
-                                     onClick={() => fetchData('pullRequest')}>Pull
+                                     onClick={() => fetchLink('pullRequest')}>Pull
                                 request</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/contributor"
                                      activeClassName="active"
-                                     onClick={() => fetchData('contributor')}>Contributor</NavLink>
+                                     onClick={() => fetchLink('contributor')}>Contributor</NavLink>
                         </li>
                     </ul>
                 </div>
