@@ -1,7 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import './Header.scss';
 
 function Header() {
+    async function fetchData(route: string): Promise<void> {
+        try {
+            const response = await fetch(`http://localhost:8000/${route}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
@@ -14,13 +28,18 @@ function Header() {
                 <div className="collapse navbar-collapse mt-2 text-end" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0 ms-auto">
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/project" activeClassName="active">Project</NavLink>
+                            <NavLink className="nav-link" to="/project" activeClassName="active"
+                                     onClick={() => fetchData('project')}>Project</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/pullrequest" activeClassName="active">Pull request</NavLink>
+                            <NavLink className="nav-link" to="/pullRequest" activeClassName="active"
+                                     onClick={() => fetchData('pullRequest')}>Pull
+                                request</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link" to="/contributor" activeClassName="active">Contributor</NavLink>
+                            <NavLink className="nav-link" to="/contributor"
+                                     activeClassName="active"
+                                     onClick={() => fetchData('contributor')}>Contributor</NavLink>
                         </li>
                     </ul>
                 </div>
