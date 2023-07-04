@@ -19,9 +19,6 @@ use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 #[Route('/project', name: 'project_')]
 class ProjectController extends AbstractController
 {
-    /**
-     * @throws \JsonException
-     */
     #[Route('/', name: 'index')]
     public function index(
         FetchGithubService $fetchGithubService,
