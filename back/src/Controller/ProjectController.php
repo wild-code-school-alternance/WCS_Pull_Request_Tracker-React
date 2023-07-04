@@ -25,8 +25,8 @@ class ProjectController extends AbstractController
         ProjectRepository $projectRepository,
         SerializerInterface $serializer
     ): JsonResponse {
-
         $dataProjects = $projectRepository->findAll();
+
         $jsonProjects = $serializer->serialize($dataProjects, 'json', [
             AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object) {
                 return $object->getId();
@@ -35,6 +35,7 @@ class ProjectController extends AbstractController
 
         return new JsonResponse($jsonProjects, 200, [], true);
     }
+
 
     #[Route('/addProject', name: 'add')]
     public function addProject(ProjectRepository $projectRepository, Request $request): Response
