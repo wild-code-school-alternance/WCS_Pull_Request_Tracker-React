@@ -1,0 +1,23 @@
+.main-container-fluid {
+  padding: 2rem;
+  background-color: #282C34; // Dark grey background for the page
+
+  .card {
+    background-color: #3C3F58; // Dark blue for the card
+    margin-bottom: 2rem;
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .card-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .btn {
+        margin-top: 1rem;
+      }
+    }
+  }
+

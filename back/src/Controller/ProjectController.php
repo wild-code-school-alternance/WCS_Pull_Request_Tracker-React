@@ -5,40 +5,38 @@ namespace App\Controller;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ContributorRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProjectRepository;
 use App\Repository\PullRequestRepository;
 use App\Service\FetchGithubService;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
-#[IsGranted('ROLE_USER')]
 #[Route('/project', name: 'project_')]
 class ProjectController extends AbstractController
 {
+    /**
+     * @throws \JsonException
+     */
     #[Route('/', name: 'index')]
     public function index(
         FetchGithubService $fetchGithubService,
         ProjectRepository $projectRepository,
-        PullRequestRepository $pullRequestRepository
-    ): Response {
+        SerializerInterface $serializer
+    ): JsonResponse {
 
-        if ($fetchGithubService->fetchProject() === true) {
-            $projects = $projectRepository->findAll();
-            $lastPRs = [];
-
-            foreach ($projects as $project) {
-                $lastPRs[$project->getId()] = $pullRequestRepository->findLastPRForProject($project);
+        $dataProjects = $projectRepository->findAll();
+        $jsonProjects = $serializer->serialize($dataProjects, 'json', [
+            AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object) {
+                return $object->getId();
             }
-            return $this->render('project/index.html.twig', [
-                'projects' => $projects,
-                'last_prs' => $lastPRs,
-            ]);
-        }
+        ]);
 
-        throw $this->createNotFoundException("Can't fetch some project on github");
+        return new JsonResponse($jsonProjects, 200, [], true);
     }
 
     #[Route('/addProject', name: 'add')]
