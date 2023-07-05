@@ -29,7 +29,11 @@
     "noImplicitReturns": true,
     "baseUrl": "src",
     "suppressExcessPropertyErrors": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "typeRoots": [
+      "src/components/Project/Projects.d.ts",
+      "./node_modules/@types"
+    ]
   },
   "include": [
     "src"
