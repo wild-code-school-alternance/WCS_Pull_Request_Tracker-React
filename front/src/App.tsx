@@ -1,10 +1,10 @@
 import styles from './app.module.scss';
-import Projects from "./components/Project/Projects";
+import ProjectIndex from "./pages/ProjectIndex/ProjectIndex";
 
 function App() {
     return (
         <div className={`${styles.appContainer}`}>
-            <Projects />
+            <ProjectIndex />
         </div>
     );
 }

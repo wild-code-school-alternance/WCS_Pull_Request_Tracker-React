@@ -1,22 +1,16 @@
-.main-container-fluid {
-  padding: 2rem;
+.card {
+  background-color: #3C3F58;
 
-  .card {
-    background-color: #3C3F58;
-    margin-bottom: 2rem;
-
-      .card-title {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-
-      .card-subtitle {
-        font-size: 1.2rem;
-      }
-
-      .btn {
-        margin-top: 1rem;
-      }
-    }
+  .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 
+  .card-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    margin-top: 1rem;
+  }
+}
